@@ -1,0 +1,32 @@
+{% extends "!layout.html" %}
+  {% block footer %} {{ super() }}
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search {
+      background: #07790d;
+    }
+    .wy-nav-top {
+      background: #07790d;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+      background: #07790d;
+    }
+    .wy-nav-content-wrap {
+      background: #fcfcfc;
+    }
+    .wy-menu-vertical a:hover {
+      background: #055709;
+    }
+    .caption-text {
+        color: black;
+    }
+    .wy-nav-content a {
+        color: #0dbb15
+    }
+    .wy-nav-content a:visited {
+        color: #055709
+    }
+  </style>
+{% endblock %}
