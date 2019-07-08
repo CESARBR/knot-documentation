@@ -5,7 +5,7 @@ Linux based OS
 --------------
 
 The actual version of KNoT Zephyr SDK is only available for Linux based systems.
-You may consider using a Virtual Machine running a Linux distribution on other systems.
+On other systems, you may consider using the `KNoT Docker <thing-docker.html>`_ (recommended) or a Virtual Machine running a Linux distribution.
 
 Zephyr
 ------
