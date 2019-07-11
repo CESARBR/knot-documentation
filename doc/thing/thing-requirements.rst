@@ -7,6 +7,8 @@ Linux based OS
 The actual version of KNoT Zephyr SDK is only available for Linux based systems.
 On other systems, you may consider using the `KNoT Docker <thing-docker.html>`_ (recommended) or a Virtual Machine running a Linux distribution.
 
+----------------------------------------------------------------
+
 Zephyr
 ------
 
@@ -64,6 +66,7 @@ KNoT uses a fork of Zephyr repository.
 
 .. note:: If you skip this step, it will be necessary to manually source zephyr-env.sh every time a new terminal is opened.
 
+----------------------------------------------------------------
 
 nRF5x Command Line Tools and Segger JLink
 -----------------------------------------
@@ -76,6 +79,8 @@ nRF5x Command Line Tools and Segger JLink
 
    $ dpkg -i nrf5_tools/nRF-Command-Line-Tools_10_2_1_Linux-amd64.deb
    $ dpkg -i nrf5_tools/JLink_Linux_V644e_x86_64.deb
+
+----------------------------------------------------------------
 
 Source KNoT environment configuration file
 ------------------------------------------
@@ -98,6 +103,7 @@ Source KNoT environment configuration file
 
    $ echo "source $KNOT_BASE/knot-env.sh" >> $HOME/.profile
 
+----------------------------------------------------------------
 
 Add support to the KNoT command line interface
 ----------------------------------------------
@@ -118,10 +124,14 @@ Add support to the KNoT command line interface
 
 .. note:: If you skip this step, it will be necessary to manually source knot-env.sh every time a new terminal is opened.
 
+----------------------------------------------------------------
+
 KNoT protocol
 -------------
 
 - Follow the instructions to install the `KNoT protocol library <https://github.com/CESARBR/knot-protocol-source>`_.
+
+----------------------------------------------------------------
 
 Add USB access to your user
 ---------------------------
@@ -131,6 +141,8 @@ Add USB access to your user
 .. code-block:: bash
 
    $ sudo usermod -a -G dialout `whoami`
+
+----------------------------------------------------------------
 
 Apply changes to profile
 ------------------------
