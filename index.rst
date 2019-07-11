@@ -29,6 +29,7 @@ Sections:
    doc/thing/thing
    doc/app-setup/app-setup
    doc/general/source_code
+   doc/general/releases
    doc/general/contact
 
 .. Indices and tables
