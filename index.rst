@@ -28,6 +28,7 @@ Sections:
    doc/gateway/gateway
    doc/thing/thing
    doc/app-setup/app-setup
+   doc/general/source_code
    doc/general/contact
 
 .. Indices and tables
