@@ -65,7 +65,7 @@ html_theme_options = {
 }
 
 html_logo = '_static/HeadLogo.svg'
-# html_favicon = ''
+html_favicon = '_static/icon_knot.png'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
