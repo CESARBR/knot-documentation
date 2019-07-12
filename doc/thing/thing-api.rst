@@ -5,7 +5,7 @@ setup() & loop()
 ----------------
 
 Similar to Arduino the ``setup()`` function is called once and ``loop()`` is always called at idle state.
-Sensors and actuactors should be registered at ``setup()`` function.
+Sensors and actuators should be registered at ``setup()`` function.
 
 .. code-block:: c
 
@@ -14,14 +14,14 @@ Sensors and actuactors should be registered at ``setup()`` function.
 
 .. warning::
 
-    ``loop()`` function must NOT be blooking.
+    ``loop()`` function must NOT be blocking.
 
 ----------------------------------------------------------------
 
 struct knot_proxy
 -----------------
 
-``knot_proxy`` is a virtual representation of a Sensor/Actuactor.
+``knot_proxy`` is a virtual representation of a Sensor/Actuator.
 Contains identifier, data values and configuration values.
 
 .. code-block:: c
@@ -46,13 +46,13 @@ Creates and tracks device changes a remote device (cloud).
    Return the virtual representation ``knot_proxy``. 
 
 :Parameters:
-   - ``id``: Sensor/Actuactor ID.
-   - ``name``: Sensor/Actuactor name.
+   - ``id``: Sensor/Actuator ID.
+   - ``name``: Sensor/Actuator name.
    - ``type_id``: Type ID of KNoT data semantic.
    - ``value_type``: Value Type KNoT data semantic.
    - ``unit``: Unit of KNoT data semantic.
-   - ``changed_cb``: Callback function to write value on Sensor/Actuactor.
-   - ``pool_cb``: Callback function to read value from Sensor/Actuactor.
+   - ``changed_cb``: Callback function to write value on Sensor/Actuator.
+   - ``pool_cb``: Callback function to read value from Sensor/Actuator.
 
 .. note::
    Check valid combinations of type_id, value_type and unit in this
@@ -63,7 +63,7 @@ Creates and tracks device changes a remote device (cloud).
 knot_proxy_set_config()
 -----------------------
 
-This fuction configures which events should send proxy value to cloud.
+This function configures which events should send proxy value to cloud.
 
 .. code-block:: c
 
@@ -73,7 +73,7 @@ This fuction configures which events should send proxy value to cloud.
    Returns ``True`` if the setting was made correctly. ``False`` otherwise.
 
 :Parameters:
-   - ``id``: Sensor/Actuactor ID.
+   - ``id``: Sensor/Actuator ID.
    - ``...``: Optional list of event flags.
 
 .. warning::
@@ -126,10 +126,10 @@ Proxy helpers to set or get sensor data at the remote.
 .. code-block:: c
 
    bool knot_proxy_value_set_basic(struct knot_proxy *proxy,
-			    const void *value);
+                   const void *value);
    bool knot_proxy_value_set_string(struct knot_proxy *proxy,
-				const char *value, int len);
+                   const char *value, int len);
    bool knot_proxy_value_get_basic(struct knot_proxy *proxy,
-				void *value);
+                   void *value);
    bool knot_proxy_value_get_string(struct knot_proxy *proxy,
-				char *value, int len, int *olen);
+                   char *value, int len, int *olen);
