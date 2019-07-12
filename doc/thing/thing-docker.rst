@@ -43,6 +43,8 @@ Compile for your target board
 
    container> $ knot make -b {BOARD}
 
+.. note:: Currently, KNoT just support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board
+
 ----------------------------------------------------------------
 
 Exporting generated files
