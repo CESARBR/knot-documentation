@@ -3,9 +3,9 @@ Using CLI
 
 .. note:: In order to use the KNoT CLI, it is necessary to fulfill the `requirements <thing-requirements.html>`_.
 
-----------------------------------------------------------------
-
 There are many commands that you can call when using the knot script (cli.py). Some of their functions are:
+
+----------------------------------------------------------------
 
 Set default target board
 ------------------------
@@ -13,9 +13,9 @@ Set default target board
 
 .. code-block:: bash
 
-   $ knot board <BOARD>
+   $ knot board {BOARD}
 
-Where `<BOARD>` can be 'dk' or 'dongle'.
+.. note:: Currently, KNoT support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} with one of them.
 
 ----------------------------------------------------------------
 
@@ -41,18 +41,31 @@ To avoid downloading the OpenThread repo on every new build, set an external pat
 
 ----------------------------------------------------------------
 
-Clear project before building
------------------------------
+Clear project and building
+--------------------------
 
 The user can delete old building files before compiling again.
 
 .. note:: This is especially useful when the project had important changes like different target board or dependency repository.
 
-- Clear old files before compiling:
+- Clear old files and compiling:
 
 .. code-block:: bash
 
    $ knot make --clean
+
+----------------------------------------------------------------
+
+Compile for your target board
+-----------------------------
+
+.. code-block:: bash
+
+   container> $ knot make -b {BOARD}
+
+.. note:: Currently, KNoT support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} with one of them.
+
+.. note:: If you already set the default board is not necessary compile with -b option.
 
 ----------------------------------------------------------------
 
@@ -93,4 +106,4 @@ These and the other commands are described when using the help command:
 
 .. code-block:: bash
 
-	$ knot --help
+   $ knot --help
