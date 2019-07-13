@@ -10,3 +10,4 @@ This library exports the following SDKs:
 .. toctree::
 
    api/api-authenticator
+   api/api-storage
