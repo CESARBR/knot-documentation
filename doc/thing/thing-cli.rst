@@ -59,11 +59,13 @@ The user can delete old building files before compiling again.
 Compile for your target board
 -----------------------------
 
+.. warning:: The build command must be run from an application folder.
+
+Currently, KNoT supports ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} by one of them.
+
 .. code-block:: bash
 
    $ knot make -b {BOARD}
-
-.. note:: Currently, KNoT supports ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} by one of them.
 
 .. note:: If you already set the default board is not necessary compile with -b option.
 
