@@ -61,9 +61,9 @@ Compile for your target board
 
 .. code-block:: bash
 
-   container> $ knot make -b {BOARD}
+   $ knot make -b {BOARD}
 
-.. note:: Currently, KNoT support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} with one of them.
+.. note:: Currently, KNoT supports ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} by one of them.
 
 .. note:: If you already set the default board is not necessary compile with -b option.
 
