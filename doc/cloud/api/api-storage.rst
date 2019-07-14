@@ -75,8 +75,6 @@ listData(query)
 
 Get all the device data messages.
 
-.. _Parameters-1:
-
 :Parameters:
 
 -  ``query`` **Object** Optional properties used to filter data.
@@ -96,8 +94,6 @@ Get all the device data messages.
 :Return:
 
 -  ``messages`` **Array** JSON object containing device data messages.
-
-.. _example-1:
 
 :Example:
 
@@ -189,8 +185,6 @@ listDataBySensor(deviceId, sensorId, query)
 
 Get the messages sent by a specific device’s sensor.
 
-.. _Parameters-1:
-
 :Parameters:
 
 -  ``deviceId`` **String** Device ID.
@@ -209,14 +203,10 @@ Get the messages sent by a specific device’s sensor.
    -  ``endDate`` **String** The finish date that you want your set of
       data (format=YYYY-MM-DD HH:MM:SS).
 
-.. _result-1:
-
 :Return:
 
 -  ``messages`` **Array** JSON object containing device’s sensor data
    messages.
-
-.. _example-1:
 
 :Example:
 

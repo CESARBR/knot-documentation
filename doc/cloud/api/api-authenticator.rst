@@ -89,8 +89,6 @@ createUser(email, password)
 
 Creates a new user.
 
-.. _Parameters-1:
-
 :Parameters:
 
 -  ``email`` **String** User email.
@@ -101,8 +99,6 @@ Creates a new user.
 
 -  ``user`` **Object** JSON object containing user credentials after
    creation on cloud.
-
-.. _example-1:
 
 :Example:
 
@@ -183,13 +179,9 @@ forgotPassword(email)
 Tells to cloud that a user forgot its password. The cloud then sends an
 email with a token to reset the password.
 
-.. _Parameters-1:
-
 :Parameters:
 
 -  ``email`` **String** User email.
-
-.. _example-1:
 
 :Example:
 
@@ -222,15 +214,11 @@ resetPassword(email, token, newPassword)
 
 Resets a password from a user.
 
-.. _Parameters-2:
-
 :Parameters:
 
 -  ``email`` **String** User email.
 -  ``token`` **String** Token sent by email.
 -  ``newPassword`` **String** User password in plain text.
-
-.. _example-2:
 
 :Example:
 
