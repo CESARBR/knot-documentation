@@ -5,18 +5,18 @@ KNoT Cloud storage service JavaScript library.
 
 ----------------------------------------------------------------
 
-Quickstart
-''''''''''
+Quick Start
+-----------
 
 Install
-^^^^^^^
+'''''''
 
 .. code:: bash
 
    npm install --save @cesarbr/knot-cloud-sdk-js-storage
 
 Run
-^^^
+'''
 
 ``KNoTCloudStorage`` connects to <protocol>://<hostname>:<port> using
 user or gateway credentials (device owner). Replace this address with
@@ -35,7 +35,7 @@ your storage instance and the credentials with valid ones.
 ----------------------------------------------------------------
 
 Methods
-'''''''
+-------
 
 constructor(options)
 ''''''''''''''''''''
