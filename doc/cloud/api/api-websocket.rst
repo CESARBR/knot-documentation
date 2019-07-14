@@ -96,8 +96,6 @@ connect()
 Connects to the protocol adapter instance. Receives the ``'ready'``
 message when succeeds and ``'error'`` otherwise.
 
-.. _example-1:
-
 :Example:
 
 .. code:: javascript
@@ -185,8 +183,6 @@ Result
 -  ``device`` **Object** JSON object containing device details after
    creation on cloud.
 
-.. _example-1:
-
 :Example:
 
 .. code:: javascript
@@ -273,8 +269,6 @@ Lists the devices registered on cloud. If a ``query`` is specified, only
 the devices that match such query will be returned. Receives the
 ``'devices'`` message when succeeds and ``'error'`` otherwise.
 
-.. _arguments-1:
-
 :Parameters:
 
 -  ``query`` **Object** (Optional) Search query, written using `MongoDB
@@ -285,8 +279,6 @@ Result
 
 -  ``devices`` **Array** Set of devices that match the constraint
    specified on ``query``.
-
-.. _example-1:
 
 :Example:
 
@@ -331,20 +323,14 @@ createSessionToken(id)
 Creates a session token for a device. Receives the ``'created'`` message
 when succeeds and ``'error'`` otherwise.
 
-.. _arguments-2:
-
 :Parameters:
 
 -  ``id`` **String** Device ID.
-
-.. _result-1:
 
 Result
 ~~~~~~
 
 -  ``token`` **String** New token for the specified device.
-
-.. _example-2:
 
 :Example:
 
@@ -425,8 +411,6 @@ updateSchema(schema)
 Updates the thing schema. Receives the ``'updated'`` message when
 succeeds and ``'error'`` otherwise.
 
-.. _arguments-1:
-
 :Parameters:
 
 -  ``schema`` **Array** An array of objects in the following format:
@@ -439,8 +423,6 @@ succeeds and ``'error'`` otherwise.
       integer, a floating-point number, etc.
    -  ``unit`` **Number** Sensor unit.
    -  ``name`` **String** Sensor name.
-
-.. _example-1:
 
 :Example:
 
@@ -485,13 +467,9 @@ activate(id)
 Activates a gateway. Receives the ``'activated'`` message when succeeds
 and ``'error'`` otherwise.
 
-.. _arguments-2:
-
 :Parameters:
 
 -  ``id`` **String** Device ID.
-
-.. _example-2:
 
 :Example:
 
@@ -573,14 +551,10 @@ publishData(sensorId, value)
 Publishes data. Receives the ``'published'`` message when succeeds and
 ``'error'`` otherwise.
 
-.. _arguments-1:
-
 :Parameters:
 
 -  ``sensorId`` **Number** Sensor ID.
 -  ``value`` **Number** Sensor value.
-
-.. _example-1:
 
 :Example:
 
@@ -617,14 +591,10 @@ getData(id, sensorIds)
 Requests a thing to send its current data items values. Receives the
 ``'sent'`` message when succeeds and ``'error'`` otherwise.
 
-.. _arguments-2:
-
 :Parameters:
 
 -  ``id`` **String** Device ID.
 -  ``sensorIds`` **Array** Array of sensor IDs.
-
-.. _example-2:
 
 :Example:
 
@@ -705,14 +675,10 @@ on(name, handler)
 
 Registers an event handler. See next section for details on events.
 
-.. _arguments-1:
-
 :Parameters:
 
 -  ``name`` **String** Event name
 -  ``handler`` **Function** Event handler.
-
-.. _example-1:
 
 :Example:
 
@@ -758,8 +724,6 @@ Triggered when a device is registered on the cloud. Only apps
 
 An object containing the registered device.
 
-.. _example-2:
-
 :Example:
 
 .. code:: javascript
@@ -784,14 +748,10 @@ Event: “unregistered”
 Triggered when a device is unregistered from the cloud. Only apps
 (``'knot:app'``) and users receive this event.
 
-.. _payload-1:
-
 :Payload:
 
 No payload. The ID of the unregistered device will come in the ``from``
 field.
-
-.. _example-3:
 
 :Example:
 
@@ -839,14 +799,10 @@ Triggered when a device of type ``'knot:app'`` sends a command.
 Currently supported commands are ``getData`` and ``setData``. Only
 things (``'knot:thing'``) receive this event.
 
-.. _payload-1:
-
 :Payload:
 
 An object in the following format: - ``name`` **String** Command name. -
 ``args`` **Any** (Optional) Command-defined arguments.
-
-.. _example-1:
 
 :Example:
 
