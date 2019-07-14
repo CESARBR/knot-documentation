@@ -4,18 +4,20 @@ WebSocket SDK
 A client side library that provides a WebSocket abstraction to the KNoT
 Cloud for Node.js and browser applications.
 
-Quickstart
-''''''''''
+----------------------------------------------------------------
+
+Quick Start
+-----------
 
 Install
-^^^^^^^
+'''''''
 
 .. code:: bash
 
    npm install --save @cesarbr/knot-cloud-websocket
 
 Run
-^^^
+'''
 
 ``KNoTCloudWebSocket`` connects to
 <protocol>://<hostname>:<port>/<pathname> using ID and token as
@@ -47,8 +49,10 @@ and the credentials with valid ones.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 Methods
-'''''''
+-------
 
 constructor(options)
 ''''''''''''''''''''
@@ -84,6 +88,8 @@ adapter instance.
      token: 'd5265dbc4576a88f8654a8fc2c4d46a6d7b85574',
    });
 
+----------------------------------------------------------------
+
 connect()
 '''''''''
 
@@ -115,8 +121,10 @@ message when succeeds and ``'error'`` otherwise.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 close()
--------
+'''''''
 
 Closes the current connection.
 
@@ -145,8 +153,10 @@ Closes the current connection.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 register(properties)
---------------------
+''''''''''''''''''''
 
 Registers a new device. Receives the ``'registered'`` message when
 succeeds and ``'error'`` otherwise.
@@ -215,6 +225,8 @@ Result
    //      id: '6e5a681b2ae7be40' },
    //   token: '40ad864d503488eda9b629825876d46cb1356bdf' }
 
+----------------------------------------------------------------
+
 unregister(id)
 ''''''''''''''
 
@@ -251,6 +263,8 @@ when succeeds and ``'error'`` otherwise.
      client.close();
    });
    client.connect();
+
+----------------------------------------------------------------
 
 getDevices(query)
 '''''''''''''''''
@@ -309,6 +323,8 @@ Result
    //      { gateways: [ '78159106-41ca-4022-95e8-2511695ce64c' ],
    //        id: '6e5a681b2ae7be40' } } ]
 
+----------------------------------------------------------------
+
 createSessionToken(id)
 ''''''''''''''''''''''
 
@@ -361,6 +377,8 @@ Result
 
 .. _MongoDB query format: https://docs.mongodb.com/manual/tutorial/query-documents/
 
+----------------------------------------------------------------
+
 revokeSessionToken(id, token)
 '''''''''''''''''''''''''''''
 
@@ -398,6 +416,8 @@ succeeds and ``'error'`` otherwise.
      client.close();
    });
    client.connect();
+
+----------------------------------------------------------------
 
 updateSchema(schema)
 ''''''''''''''''''''
@@ -457,6 +477,8 @@ succeeds and ``'error'`` otherwise.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 activate(id)
 ''''''''''''
 
@@ -497,6 +519,8 @@ and ``'error'`` otherwise.
      client.close();
    });
    client.connect();
+
+----------------------------------------------------------------
 
 updateMetadata(id, metadata)
 ''''''''''''''''''''''''''''
@@ -541,6 +565,8 @@ succeeds and ``'error'`` otherwise.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 publishData(sensorId, value)
 ''''''''''''''''''''''''''''
 
@@ -583,6 +609,8 @@ Publishes data. Receives the ``'published'`` message when succeeds and
    });
    client.connect();
 
+----------------------------------------------------------------
+
 getData(id, sensorIds)
 ''''''''''''''''''''''
 
@@ -624,6 +652,8 @@ Requests a thing to send its current data items values. Receives the
      client.close();
    });
    client.connect();
+
+----------------------------------------------------------------
 
 setData(id, data)
 '''''''''''''''''
@@ -668,6 +698,8 @@ otherwise.
    });
    client.connect();
 
+----------------------------------------------------------------
+
 on(name, handler)
 '''''''''''''''''
 
@@ -709,7 +741,7 @@ Registers an event handler. See next section for details on events.
    client.connect();
 
 Events
-''''''
+------
 
 Events can be listened to by registering a handler with ``on()``. The
 handler will receive an object in the following format: \* ``from``
@@ -717,7 +749,7 @@ handler will receive an object in the following format: \* ``from``
 (Optional) Event-defined payload.
 
 Event: “registered”
-^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''
 
 Triggered when a device is registered on the cloud. Only apps
 (``'knot:app'``) and users receive this event.
@@ -744,8 +776,10 @@ An object containing the registered device.
      },
    }
 
+----------------------------------------------------------------
+
 Event: “unregistered”
-^^^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''''
 
 Triggered when a device is unregistered from the cloud. Only apps
 (``'knot:app'``) and users receive this event.
@@ -767,8 +801,10 @@ field.
      from: '6e5a681b2ae7be40'
    }
 
+----------------------------------------------------------------
+
 Event: “data”
-^^^^^^^^^^^^^
+'''''''''''''
 
 Triggered when a device publishes data items. Only apps ``'knot:app'``
 and users receive this event.
@@ -794,8 +830,10 @@ An object in the following format:
      },
    }
 
+----------------------------------------------------------------
+
 Event: “command”
-^^^^^^^^^^^^^^^^
+''''''''''''''''
 
 Triggered when a device of type ``'knot:app'`` sends a command.
 Currently supported commands are ``getData`` and ``setData``. Only

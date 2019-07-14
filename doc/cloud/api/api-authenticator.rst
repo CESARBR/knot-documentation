@@ -5,18 +5,18 @@ KNoT Cloud authenticator service JavaScript library.
 
 ----------------------------------------------------------------
 
-Quickstart
-''''''''''
+Quick Start
+-----------
 
 Install
-^^^^^^^
+'''''''
 
 .. code:: bash
 
    npm install --save @cesarbr/knot-cloud-sdk-js-authenticator
 
 Run
-^^^
+'''
 
 ``KNoTCloudAuthenticator`` connects to <protocol>://<hostname>:<port>
 using email and password as credentials. Replace this address with your
@@ -47,7 +47,7 @@ authenticator instance and the credentials with valid ones.
 ----------------------------------------------------------------
 
 Methods
-'''''''
+-------
 
 constructor(options)
 ''''''''''''''''''''
