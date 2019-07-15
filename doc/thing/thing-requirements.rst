@@ -14,7 +14,8 @@ Zephyr
 
 KNoT uses a fork of Zephyr repository.
 
-- Set up a Zephyr development environment by following these `instructions <https://docs.zephyrproject.org/latest/getting_started/index.html#set-up-a-development-system>`_.
+- Set up a Zephyr development environment by following these `instructions <https://docs.zephyrproject.org/latest/getting_started/installation_linux.html>`_.
+
 - Program the ``$HOME/.profile`` to always set **ZEPHYR_TOOLCHAIN_VARIANT** and **ZEPHYR_SDK_INSTALL_DIR**.
 
 .. code-block:: bash
