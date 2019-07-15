@@ -43,7 +43,7 @@ Creates and tracks device changes a remote device (cloud).
 				       knot_callback_t pool_cb);
 
 :Return:
-   Return the virtual representation ``knot_proxy``. 
+   Return the virtual representation ``knot_proxy``.
 
 :Parameters:
    - ``id``: Sensor/Actuator ID.
@@ -118,18 +118,82 @@ information to the cloud.
 
 ----------------------------------------------------------------
 
-knot_proxy_value_*
-------------------
+knot_proxy_value_*()
+--------------------
 
 Proxy helpers to set or get sensor data at the remote.
+
+
+knot_proxy_value_set_basic()
+''''''''''''''''''''''''''''
+
+This function is a proxy helper to set a new basic value on a ``knot_proxy``. Basic values are boolean, int or float.
 
 .. code-block:: c
 
    bool knot_proxy_value_set_basic(struct knot_proxy *proxy,
                    const void *value);
+
+:Return:
+   True if the new value is sent. ``False`` otherwise.
+
+:Parameters:
+   - ``proxy``: Virtual representation of a Sensor/Actuator.
+   - ``value``: Pointer to a boolean, int or float value that will be set.
+
+
+knot_proxy_value_set_string()
+'''''''''''''''''''''''''''''
+
+This function is a proxy helper to set a string value on a ``knot_proxy``.
+
+.. code-block:: c
+
    bool knot_proxy_value_set_string(struct knot_proxy *proxy,
                    const char *value, int len);
+
+:Return:
+   True if the new value is sent. ``False`` otherwise.
+
+:Parameters:
+   - ``proxy``: Virtual representation of a Sensor/Actuator.
+   - ``value``: Pointer to char (array of char).
+   - ``len``: The actual size of the string.
+
+
+knot_proxy_value_get_basic()
+''''''''''''''''''''''''''''
+
+This function is a proxy helper to get a new basic value from a ``knot_proxy``. Basic values are boolean, int or float.
+
+.. code-block:: c
+
    bool knot_proxy_value_get_basic(struct knot_proxy *proxy,
                    void *value);
+
+:Return:
+   True if successful. ``False`` otherwise.
+
+:Parameters:
+   - ``proxy``: Virtual representation of a Sensor/Actuator.
+   - ``value``: Pointer to a boolean, int or float to put the get value.
+
+
+knot_proxy_value_get_string()
+'''''''''''''''''''''''''''''
+
+This function is a proxy helper to get a new string value from a ``knot_proxy``.
+
+.. code-block:: c
+
    bool knot_proxy_value_get_string(struct knot_proxy *proxy,
                    char *value, int len, int *olen);
+
+:Return:
+   True if successful. ``False`` otherwise.
+
+:Parameters:
+   - ``proxy``: Virtual representation of a Sensor/Actuator.
+   - ``value``: Pointer to char (array of char).
+   - ``len``: The actual size of the string.
+   - ``olen``: The address of a variable to save the size of the string.
