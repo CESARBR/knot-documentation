@@ -7,82 +7,119 @@ This guide will help you to set up thing's development environment, then build a
 
 Thing's Development Environment
 -------------------------------
+In order to compile and flash applications for the KNoT Thing, it's necessary to set up the development environment.
 
-The fastest way to use or to develop for KNoT thing is to use the `KNoT Thing Docker container <../thing/thing-docker.html>`_.
+The fastest way to do it is by using a pre-built Docker image.
 
-Another way is to get the KNoT Thing source code by following all steps listed on `requirements <../thing/thing-requirements.html>`_.
+#. Download and install `Docker <https://docs.docker.com/install/>`_.
 
-After this set up, it will be possible to use the `KNoT CLI application <../thing/thing.cli.html>`_.
+#. In a terminal, get the latest KNoT Thing SDK Docker environment image.
+
+   .. code-block:: bash
+
+      docker pull cesarbr/knot-zephyr-sdk:latest
+
+.. note:: Docker is only available for Linux based systems, macOS 10.11+ and Windows 10 Pro/Enterprise.
 
 ----------------------------------------------------------------
 
-KNoT Thing Hello World
-----------------------
+Programming the KNoT Thing
+--------------------------
 
-Connect and set the target board
-''''''''''''''''''''''''''''''''
+Compiling project
+'''''''''''''''''
 
-You may be using one of the two supported boards: DK (nrf52840_pca10056) or Dongle (nrf52840_pca10059).
-
-   - If using the DK:
-
-      - Connect the board to a USB port.
-      - Set the DK as the default target board.
-
-      .. code-block:: bash
-
-         $ knot board dk
-
-   - If using the Dongle:
-
-      - Connect the board to a USB port.
-      - Press the reset button. The red led will blink.
-      - Set the Dongle as the default target board.
-
-      .. code-block:: bash
-
-         $ knot board dongle
-
-Build KNoT Hello App
-''''''''''''''''''''
-
-- Go to the KNoT Hello directory.
+#. Clone the `zephyr-knot-sdk repository <https://github.com/CESARBR/zephyr-knot-sdk>`_ to your home folder.
 
    .. code-block:: bash
 
-      $ cd $KNOT_BASE/apps/hello
+      git clone https://github.com/CESARBR/zephyr-knot-sdk.git ~/zephyr-knot-sdk
 
-.. note:: If you are using the Dongle go to hello-dongle directory.
-
-- Build and flash apps.
+#. Navigate to the application project directory.
 
    .. code-block:: bash
 
-      $ knot make --mcuboot
+      cd ~/zephyr-knot-sdk/apps/hello-dongle
 
-.. note:: The option 'mcuboot' flashes the compiled program and the mcuboot bootloader at the end of building.
+#. Run environment image.
 
-Monitor the output
-''''''''''''''''''
+   .. code-block:: bash
 
-You can use minicom or any other serial port reader to monitor the app output.
+      docker run -ti -v $(pwd)/:/workdir cesarbr/knot-zephyr-sdk:latest
 
-- Install minicom
+#. From the container, build the project for the target board.
 
-.. tip:: You can install minicom on debian based systems by using: ``$ sudo apt-get install minicom``
+   - If using the `KNoT DK <https://docs.zephyrproject.org/latest/boards/arm/nrf52840_pca10056/doc/index.html>`_:
 
-.. code-block:: bash
+      .. code-block:: bash
 
-   $ minicom -D <your-device>
+         [user@container] $ knot make --board dk
 
-.. tip:: If you are using debian the device usually is something like /dev/ttyACM0.
+   - If using the `KNoT Dongle <https://docs.zephyrproject.org/latest/boards/arm/nrf52840_pca10059/doc/index.html>`_:
+
+      .. code-block:: bash
+
+         [user@container] $ knot make --board dongle
+
+
+Flashing board
+''''''''''''''
+
+#. From your project folder, export the generated files to a ``output`` folder.
+
+   .. code-block:: bash
+
+      [user@container] $ knot export output/
+
+#. Install `nRF Connect <https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/Download>`_.
+
+#. Open *nRF Connect* and add the *Programmer App*.
+
+   .. figure:: ../../_static/nrfconnect_add_programmer.png
+      :scale: 70 %
+      :alt: nRF Connect: Add Programmer
+      :align: center
+
+#. Launch the *Programmer App*.
+
+   .. figure:: ../../_static/nrfconnect_launch_programmer.png
+      :scale: 70 %
+      :alt: nRF Connect: Launch Programmer
+      :align: center
+
+#. Connect the device to a USB port.
+
+   .. tip:: If using the `KNoT Dongle <https://docs.zephyrproject.org/latest/boards/arm/nrf52840_pca10059/doc/index.html>`_, press the *RESET* button to get into DFU mode.
+      The red LED will start to blink.
+
+#. Select the target device.
+
+   .. figure:: ../../_static/nrfconnect_select_device.png
+      :scale: 70 %
+      :alt: nRF Connect: Select device
+      :align: center
+
+#. Define the HEX file to be flashed.
+
+   Click **Add HEX file** and select the ``boot_sgn_apps.hex`` file that was exported to the ``output/`` folder.
+
+   .. figure:: ../../_static/nrfconnect_add_hex.png
+      :scale: 70 %
+      :alt: nRF Connect: Add HEX file
+      :align: center
+
+   .. note:: The path for the hex file should be ``~/zephyr-knot-sdk/apps/hello-dongle/output/boot_sgn_apps.hex``.
+
+#. Flash the project.
+
+   Click **Write** and wait for the board to be flashed. The red LED will stop blinking for the Dongle.
 
 ----------------------------------------------------------------
 
 KNoT Setup App
 --------------
 
-Considering the KNoT Gateway is configured.
+For this step, we are considering that the KNoT Gateway is already configured.
 
 You may use the `mobile KNoT Setup App <../app-setup/app-setup.html>`_ to configure the thing network.
 
@@ -93,9 +130,9 @@ After a successful thing configuration, **reset the board**.
 Connected Thing
 ---------------
 
-If all the steps were followed correctly, will be possible to see the KNoT Dongle connected on KNoT WebUI.
+If all the steps were followed correctly, it will be possible to see that the KNoT Thing is connected to the target Gateway.
 
-.. image:: ../../_static/webui_devices.png
+.. figure:: ../../_static/webui_devices.png
    :scale: 100 %
    :alt: WebUI connected devices
    :align: center
