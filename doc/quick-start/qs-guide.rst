@@ -163,14 +163,60 @@ Flashing board
 
 ----------------------------------------------------------------
 
-KNoT Setup App
---------------
+Configuring the Thing network
+-----------------------------
 
-For this step, we are considering that the KNoT Gateway is already configured.
+In this section we are going to configure the Thing to automatically connect to the Gateway mesh network.
 
-You may use the `mobile KNoT Setup App <../app-setup/app-setup.html>`_ to configure the thing network.
+#. Make sure that the device Thing is on the `Setup Mode`, indicated by the alternating LEDs.
 
-After a successful thing configuration, **reset the board**.
+   .. figure:: ../../_static/dongle_setup.gif
+      :scale: 130 %
+      :alt: KNoT Dongle: Setup mode
+      :align: center
+
+      KNoT Dongle: Setup mode
+
+   .. figure:: ../../_static/dk_setup.gif
+      :scale: 70 %
+      :alt: KNoT DK: Setup mode
+      :align: center
+
+      KNoT DK: Setup mode
+
+#. Download the `mobile KNoT Setup App <https://knot-devel.cesar.org.br/releases/latest/knot_setup_app.apk>`_ and install it to your smartphone (Android only).
+
+#. Connect your smartphone to the same Wi-Fi network that you connected your Gateway to.
+
+#. Open the KNoT Setup App, and select your gateway under the *Connected* tab
+
+   .. figure:: ../../_static/android_gateways_connected.png
+      :scale: 20 %
+      :alt: Setup App: Connected Gateways
+      :align: center
+
+#. Login with your user credentials
+
+   .. figure:: ../../_static/android_gateway_login.png
+      :scale: 20 %
+      :alt: Setup App: Gateway login
+      :align: center
+
+#. Select the target Thing under the *Unregistered* tab
+
+   .. figure:: ../../_static/android_things_unregistered.png
+      :scale: 20 %
+      :alt: Setup App: Unregistered Things
+      :align: center
+
+#. Wait for the OpenThread configurations to be transferred.
+
+   .. figure:: ../../_static/android_ot_settings.png
+      :scale: 20 %
+      :alt: Setup App: OpenThread settings
+      :align: center
+
+#. Power off and on the KNoT Thing.
 
 ----------------------------------------------------------------
 
