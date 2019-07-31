@@ -5,6 +5,53 @@ This guide will help you to set up thing's development environment, then build a
 
 ----------------------------------------------------------------
 
+Configuring the KNoT Gateway
+----------------------------
+
+#. Connect the KNoT Gateway to the same network as your computer (by using an ethernet cable).
+
+#. Access the gateway with `<http://knot.local>`_ and start the setup wizard.
+
+   .. figure:: ../../_static/gateway_setup_wizard.png
+      :scale: 70 %
+      :alt: Gateway: Setup Wizard
+      :align: center
+
+#. Use the default cloud settings and proceed.
+
+   .. figure:: ../../_static/gateway_setup_cloud.png
+      :scale: 50 %
+      :alt: Gateway: Cloud setup
+      :align: center
+
+#. Create your KNoT Cloud user and sign in to it.
+
+   .. figure:: ../../_static/gateway_setup_signin.png
+      :scale: 70 %
+      :alt: Gateway: Sign in to cloud
+      :align: center
+
+#. Create a new gateway at the cloud and name it.
+
+   .. figure:: ../../_static/gateway_setup_name.png
+      :scale: 70 %
+      :alt: Gateway: Create new gateway
+      :align: center
+
+#. Wait for the gateway to reboot.
+
+#. Log in with the email and password you just signed up at `KNoT Cloud <https://knot.cloud>`_.
+
+   .. figure:: ../../_static/gateway_signin.png
+      :scale: 70 %
+      :alt: Gateway: Sign in
+      :align: center
+
+   .. note:: As there are no KNoT Things connected to your gateway, the message `"No nearby devices found."` will be displayed
+
+
+----------------------------------------------------------------
+
 Thing's Development Environment
 -------------------------------
 In order to compile and flash applications for the KNoT Thing, it's necessary to set up the development environment.
