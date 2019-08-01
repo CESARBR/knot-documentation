@@ -232,7 +232,175 @@ If all the steps were followed correctly, it will be possible to see that the KN
 
 ----------------------------------------------------------------
 
-KNoT Cloud SDK
---------------
+Representing an Application on KNoT Cloud
+-----------------------------------------
 
-To interact with data from device, utilize KNoT Cloud SDK to construct a User Application.
+#. Log-in to KNoT Cloud.
+
+    .. figure:: ../../_static/cloud_login.png
+      :scale: 35 %
+      :alt: KNoT Cloud UI login page
+      :align: center
+
+#. Go to Apps page and create an application.
+
+    .. figure:: ../../_static/cloud_app_creation.png
+      :scale: 25 %
+      :alt: KNoT Cloud UI applications page
+      :align: center
+
+#. Set a name to your application.
+
+    .. figure:: ../../_static/cloud_app_creation_modal.png
+      :scale: 28 %
+      :alt: KNoT Cloud UI applications modal
+      :align: center
+
+#. Download the application credentials.
+
+    .. figure:: ../../_static/cloud_app_credentials.png
+      :scale: 35 %
+      :alt: KNoT Cloud UI download app credentials
+      :align: center
+
+#. The application credentials should look like:
+
+    .. code-block:: json
+
+      {
+        "type": "knot:app",
+        "metadata": {
+          "name": "Hello Application"
+        },
+        "knot": {
+          "id": "3c92790f-f265-46c9-bbf8-e440f0447587",
+          "isThingManager": false
+        },
+        "token": "826faa7d545e39c8b2a198c74d0da54f95dfea55"
+      }
+
+----------------------------------------------------------------
+
+Interacting with an Application through KNoT Cloud SDK
+------------------------------------------------------
+
+#. Download and install `NodeJS and NPM <https://nodejs.org/en/download/>`_.
+
+#. Create a new directory and start a NodeJS application on it.
+
+    .. code-block:: bash
+
+      mkdir my_knot_app
+      cd my_knot_app
+      npm init -y
+
+#. Install the KNoT Cloud SDK for JavaScript.
+
+    .. code-block:: bash
+
+      npm i -s @cesarbr/knot-cloud-sdk-js
+
+#. Create an ``index.js`` file and import the ``knot-cloud-sdk-js`` library.
+
+    .. code-block:: javascript
+
+      const { Client } = require('@cesarbr/knot-cloud-sdk-js');
+
+#. Create a client connection instance with the KNoT Cloud WebSocket server.
+
+    .. code-block:: javascript
+
+      const client = new Client({
+        hostname: 'ws.knot.cloud',
+        protocol: 'wss',
+        port: 443,
+        pathname: '/ws',
+        id: '3c92790f-f265-46c9-bbf8-e440f0447587', // APP ID
+        token: '826faa7d545e39c8b2a198c74d0da54f95dfea55', // APP TOKEN
+      });
+
+    .. warning:: Update the ``id`` and ``token`` fields with the application credentials that you have received.
+
+#. Get the KNoT Thing's ID from the gateway interface.
+
+    .. figure:: ../../_static/webui_devices_id.png
+      :scale: 100 %
+      :alt: KNoT Thing ID
+      :align: center
+
+#. Send ``setData`` command to turn off the KNoT Thing's LED when the connection is established.
+
+    .. code-block:: javascript
+
+      const data = [
+        {
+          sensorId: 0, // LED's sensorID
+          value: false, // New LED's value
+        },
+      ];
+
+      client.on('ready', () => {
+        client.setData('2828b4c983f2d9d1', data); // Send setData command, passing to it the KNoT Thing's ID and the data.
+      });
+
+      client.on('sent', () => {
+        client.close(); // close the connection after command is sent
+      });
+
+      client.on('error', (err) => {
+        console.log(err);
+        console.log('Connection refused');
+      });
+
+      client.connect();
+
+    .. note:: Use the KNoT Thing's ID in lowercase like: ``2828b4c983f2d9d1``.
+
+#. Listen to data events sent by the KNoT Thing. These events can be listened to by registering a handler with ``on('data')``.
+
+    .. code-block:: javascript
+
+      client.on('ready', () => {});
+
+      client.on('data', (data) => {
+        if (data.from === '2828b4c983f2d9d1') {
+          console.log(JSON.stringify(data, null, 2));
+        }
+      })
+
+      client.on('error', (err) => {
+        console.log(err);
+        console.log('Connection refused');
+      });
+
+      client.connect();
+
+    .. note::
+      This event listener will receive every data events sent by all things
+      associated with your user. To filter them, you just need to compare the
+      ``from`` field with the KNoT Thing ID you want to listen.
+
+#. The expected incoming data should look like:
+
+    .. code-block:: json
+
+      {
+        "from": "2828b4c983f2d9d1",
+        "payload": {
+          "sensorId": 0,
+          "value": false,
+        }
+      }
+
+#. Run the example.
+
+    .. code-block:: bash
+
+      NODE_TLS_REJECT_UNAUTHORIZED=0 node index.js
+
+    .. note::
+      The environment variable `NODE_TLS_REJECT_UNAUTHORIZED
+      <https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value>`_
+      need to be set to '0' in order to disable the TLS certificate
+      verification, since you are connecting to a WebSocket Secure server.
+      It should be used only on development.
