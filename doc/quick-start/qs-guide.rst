@@ -8,6 +8,36 @@ This guide will help you to set up thing's development environment, then build a
 Configuring the KNoT Gateway
 ----------------------------
 
+Flashing the KNoT Gateway
+'''''''''''''''''''''''''
+
+Execute the following steps if you have a Raspberry Pi that is not flashed with a KNoT Gateway image.
+
+You will need an SD Card reader to install the image.
+
+#. Download the gateway image (``.img`` file) for your gateway from the `releases webpage <https://knot-devel.cesar.org.br/releases/latest/>`_.
+
+#. Download and install `balenaEtcher <https://www.balena.io/etcher/>`_.
+
+#. Connect an SD card to your computer.
+
+#. Open balenaEtcher and select the downloaded ``.img`` file.
+
+#. Select the target SD card.
+
+#. Flash it.
+
+#. Connect the SD card to your gateway.
+
+You now have a flashed KNoT Gateway! Let's configure it!
+
+.. note:: Experienced users may follow `Raspberry Pi's official installing tutorial <https://www.raspberrypi.org/documentation/installation/installing-images/>`_
+          for more flashing options.
+
+
+Adding Gateway to KNoT Cloud
+''''''''''''''''''''''''''''
+
 #. Connect the KNoT Gateway to the same network as your computer (by using an ethernet cable).
 
 #. Access the gateway with `<http://knot.local>`_ and start the setup wizard.
