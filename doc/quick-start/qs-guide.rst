@@ -250,10 +250,18 @@ In this section we are going to configure the Thing to automatically connect to 
 
 ----------------------------------------------------------------
 
-Connected Thing
----------------
+See connected Things
+--------------------
 
 If all the steps were followed correctly, it will be possible to see that the KNoT Thing is connected to the target Gateway.
+
+To do so:
+
+#. Access the gateway web page with `<http://knot.local>`_.
+
+#. Login with your user credentials.
+
+#. Look for your connected thing and see the value being updated.
 
 .. figure:: ../../_static/webui_devices.png
    :scale: 100 %
