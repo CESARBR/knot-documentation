@@ -9,3 +9,4 @@ KNoT Thing
    thing-create-app
    thing-samples
    thing-api
+   thing-supported-boards
