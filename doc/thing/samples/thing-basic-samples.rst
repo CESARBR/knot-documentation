@@ -5,5 +5,6 @@ Basic Samples
 
    basic-samples/hello-dongle
    basic-samples/hello
+   basic-samples/tank
    basic-samples/thermo
    basic-samples/toggle
