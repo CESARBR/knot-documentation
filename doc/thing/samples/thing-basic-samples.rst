@@ -5,3 +5,4 @@ Basic Samples
 
    basic-samples/hello-dongle
    basic-samples/hello
+   basic-samples/toggle
