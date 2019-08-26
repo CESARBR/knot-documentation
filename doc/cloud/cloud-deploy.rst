@@ -320,7 +320,7 @@ Configure reset address
 Set ``RESET_SENDER_ADDRESS`` with the e-mail address that will send the reset
 password e-mails.
 If this stack is being deployed on an accessible domain, replaced ``RESET_URI``
-with **http://&lt;your-domain&gt;/reset**. This is the reset password address
+with **http://<your-domain>/reset**. This is the reset password address
 that is going to be sent by e-mail.
 
 This is a **required** option, but you could fill using a bogus e-mail address
