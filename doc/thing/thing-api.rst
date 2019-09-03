@@ -1,6 +1,12 @@
 API Reference
 =============
 
+KNoT uses the concept of Data Items to define how a specified variable should be
+tracked and/or updated.
+
+The readings and writes to the target variable are done automatically by KNoT and
+the fit callback functions are called if specified.
+
 setup() & loop()
 ----------------
 
@@ -18,41 +24,44 @@ Sensors and actuators should be registered at ``setup()`` function.
 
 ----------------------------------------------------------------
 
-struct knot_proxy
------------------
+Data
+----
 
-``knot_proxy`` is a virtual representation of a Sensor/Actuator.
-Contains identifier, data values and configuration values.
+``Data`` is a representation of a target variable that should be
+tracked/updated by KNoT.
+Each device can have as many Data items as limited by the setting
+``CONFIG_KNOT_THING_DATA_MAX`` in the ``prj.conf`` file.
 
-.. code-block:: c
-
-   struct knot_proxy;
+A Data item is identified by its id and can be only associated to a single
+target variable.
 
 ----------------------------------------------------------------
 
-knot_proxy_register()
----------------------
+knot_data_register()
+--------------------
 
-Creates and tracks device changes a remote device (cloud).
+Registers a target variable that should be tracked/updated by KNoT.
 
 .. code-block:: c
 
-   struct knot_proxy *knot_proxy_register(u8_t id, const char *name,
-				       u16_t type_id, u8_t value_type,
-				       u8_t unit, knot_callback_t changed_cb,
-				       knot_callback_t pool_cb);
+   int knot_data_register(u8_t id, const char *name,
+                          u16_t type_id, u8_t value_type, u8_t unit,
+                          void *target, size_t target_len,
+                          knot_callback_t write_cb, knot_callback_t read_cb);
 
 :Return:
-   Return the virtual representation ``knot_proxy``.
+   Returns the assigned id. Returns a negative number in case of failure.
 
 :Parameters:
-   - ``id``: Sensor/Actuator ID.
+   - ``id``: Sensor/Actuator ID. Limited by CONFIG_KNOT_THING_DATA_MAX.
    - ``name``: Sensor/Actuator name.
    - ``type_id``: Type ID of KNoT data semantic.
    - ``value_type``: Value Type KNoT data semantic.
    - ``unit``: Unit of KNoT data semantic.
-   - ``changed_cb``: Callback function to write value on Sensor/Actuator.
-   - ``pool_cb``: Callback function to read value from Sensor/Actuator.
+   - ``target``: Pointer to the target variable to be read/written by KNoT.
+   - ``target_len``: Length of the target variable.
+   - ``write_cb``: Optional callback to be called after writing to the target variable. It should be set to ``NULL`` if non-existent.
+   - ``read_cb``: Optional callback to be called before reading the target variable. It should be set to ``NULL`` if non-existent.
 
 .. note::
    Check valid combinations of type_id, value_type and unit in this
@@ -60,14 +69,14 @@ Creates and tracks device changes a remote device (cloud).
 
 ----------------------------------------------------------------
 
-knot_proxy_set_config()
------------------------
+knot_data_config()
+------------------
 
-This function configures which events should send proxy value to cloud.
+This function defines which events should send the target value to cloud.
 
 .. code-block:: c
 
-   bool knot_proxy_set_config(u8_t id, ...);
+   bool knot_data_config(u8_t id, ...);
 
 :Return:
    Returns ``True`` if the setting was made correctly. ``False`` otherwise.
@@ -79,14 +88,14 @@ This function configures which events should send proxy value to cloud.
 .. warning::
    This function must end with NULL
 
-The ``event_flag`` parameter define when (or why) you want it to send
+The ``event_flag`` parameter defines when (or why) you want it to send
 information to the cloud.
 
    - By periods of time (KNOT_EVT_FLAG_TIME).
-   - When the value is greater than a threshold (KNOT_EVT_FLAG_LOWER_THRESHOLD).
-   - When the value is lower than a threshold (KNOT_EVT_FLAG_UPPER_THRESHOLD).
+   - When the value is greater than a limit (KNOT_EVT_FLAG_LOWER_THRESHOLD).
+   - When the value is lower than a limit (KNOT_EVT_FLAG_UPPER_THRESHOLD).
    - When the value changes (KNOT_EVT_FLAG_CHANGE).
-   - Combinations of these (sum).
+   - Combinations of these.
 
 +-------------------------------+------------+------------------------------------------------+
 | Flag Alias                    | | Flag     | Description                                    |
@@ -118,82 +127,18 @@ information to the cloud.
 
 ----------------------------------------------------------------
 
-knot_proxy_value_*()
---------------------
+knot_callback_t
+---------------
 
-Proxy helpers to set or get sensor data at the remote.
+Callbacks can be used to update the target variable before the KNoT Machine reads
+it or to handle new changes made to it.
 
+The return codes, ``KNOT_CALLBACK_SUCCESS`` and ``KNOT_CALLBACK_FAIL``, can be used
+to sign if the callback was successfully executed.
 
-knot_proxy_value_set_basic()
-''''''''''''''''''''''''''''
+.. note::
+   In case of the Write Callback return failure, the old value will be restored
+   to the target variable by the KNoT Machine.
 
-This function is a proxy helper to set a new basic value on a ``knot_proxy``. Basic values are boolean, int or float.
-
-.. code-block:: c
-
-   bool knot_proxy_value_set_basic(struct knot_proxy *proxy,
-                   const void *value);
-
-:Return:
-   True if the new value is sent. ``False`` otherwise.
-
-:Parameters:
-   - ``proxy``: Virtual representation of a Sensor/Actuator.
-   - ``value``: Pointer to a boolean, int or float value that will be set.
-
-
-knot_proxy_value_set_string()
-'''''''''''''''''''''''''''''
-
-This function is a proxy helper to set a string value on a ``knot_proxy``.
-
-.. code-block:: c
-
-   bool knot_proxy_value_set_string(struct knot_proxy *proxy,
-                   const char *value, int len);
-
-:Return:
-   True if the new value is sent. ``False`` otherwise.
-
-:Parameters:
-   - ``proxy``: Virtual representation of a Sensor/Actuator.
-   - ``value``: Pointer to char (array of char).
-   - ``len``: The actual size of the string.
-
-
-knot_proxy_value_get_basic()
-''''''''''''''''''''''''''''
-
-This function is a proxy helper to get a new basic value from a ``knot_proxy``. Basic values are boolean, int or float.
-
-.. code-block:: c
-
-   bool knot_proxy_value_get_basic(struct knot_proxy *proxy,
-                   void *value);
-
-:Return:
-   True if successful. ``False`` otherwise.
-
-:Parameters:
-   - ``proxy``: Virtual representation of a Sensor/Actuator.
-   - ``value``: Pointer to a boolean, int or float to put the get value.
-
-
-knot_proxy_value_get_string()
-'''''''''''''''''''''''''''''
-
-This function is a proxy helper to get a new string value from a ``knot_proxy``.
-
-.. code-block:: c
-
-   bool knot_proxy_value_get_string(struct knot_proxy *proxy,
-                   char *value, int len, int *olen);
-
-:Return:
-   True if successful. ``False`` otherwise.
-
-:Parameters:
-   - ``proxy``: Virtual representation of a Sensor/Actuator.
-   - ``value``: Pointer to char (array of char).
-   - ``len``: The actual size of the string.
-   - ``olen``: The address of a variable to save the size of the string.
+   In case of the Read Callback return failure, the target variable will not be
+   read by the KNoT Machine.
