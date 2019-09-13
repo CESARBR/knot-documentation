@@ -116,7 +116,7 @@ Compiling project
 
    .. code-block:: bash
 
-      cd ~/zephyr-knot-sdk/apps/hello-dongle
+      cd ~/zephyr-knot-sdk/apps/blink
 
 #. Run environment image.
 
@@ -185,7 +185,7 @@ Flashing board
       :alt: nRF Connect: Add HEX file
       :align: center
 
-   .. note:: The path for the hex file should be ``~/zephyr-knot-sdk/apps/hello-dongle/output/boot_sgn_apps.hex``.
+   .. note:: The path for the hex file should be ``~/zephyr-knot-sdk/apps/blink/output/boot_sgn_apps.hex``.
 
 #. Flash the project.
 
