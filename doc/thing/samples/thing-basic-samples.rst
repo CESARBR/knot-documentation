@@ -4,7 +4,7 @@ Basic Samples
 .. toctree::
 
    basic-samples/blink
-   basic-samples/hello
+   basic-samples/button
    basic-samples/multisensor
    basic-samples/plate
    basic-samples/tank
