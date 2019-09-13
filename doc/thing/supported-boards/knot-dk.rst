@@ -136,6 +136,6 @@ Suggested examples
 
 The suggested samples using peripherals are listed as following.
 
-   - `hello-dongle <../samples/basic-samples/hello-dongle.html>`_
+   - `blink <../samples/basic-samples/blink.html>`_
    - `analog-alert <../samples/sensor-samples/analog-alert.html>`_
    - `digital-counter <../samples/sensor-samples/digital-counter.html>`_
