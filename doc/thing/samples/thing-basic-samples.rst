@@ -3,7 +3,7 @@ Basic Samples
 
 .. toctree::
 
-   basic-samples/hello-dongle
+   basic-samples/blink
    basic-samples/hello
    basic-samples/multisensor
    basic-samples/plate

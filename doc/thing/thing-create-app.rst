@@ -125,7 +125,7 @@ On ``setup()`` you can register your sensors/actuators using `knot_proxy_registe
 
 For each registered sensor/actuator you may want to create a ``changed_cb`` or ``pool_cb`` function, this function are passed as callback on `register <thing-api.html#knot-proxy-register>`_ function.
 
-**Example** (`hello-dongle <samples/basic-samples/hello-dongle.html>`_):
+**Example** (`blink <samples/basic-samples/blink.html>`_):
 
 .. code-block:: c
    :linenos:
