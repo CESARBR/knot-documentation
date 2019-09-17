@@ -44,6 +44,8 @@ To avoid downloading the OpenThread repo on every new build, set an external pat
 Clear project and building
 --------------------------
 
+.. warning:: The build command must be run from an application folder.
+
 The user can delete old building files before compiling again.
 
 .. note:: This is especially useful when the project had important changes like different target board or dependency repository.
@@ -73,6 +75,8 @@ Currently, KNoT supports ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca1
 
 Flash board when done
 ---------------------
+
+.. warning:: The build command must be run from an application folder.
 
 The user can flash the board just after building it.
 
