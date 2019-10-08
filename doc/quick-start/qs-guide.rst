@@ -273,7 +273,7 @@ To do so:
 Representing an Application on KNoT Cloud
 -----------------------------------------
 
-#. Log-in to KNoT Cloud.
+#. Log-in to `KNoT Cloud <https://knot.cloud/>`_.
 
     .. figure:: ../../_static/cloud_login.png
       :scale: 35 %
