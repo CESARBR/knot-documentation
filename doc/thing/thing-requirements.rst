@@ -144,7 +144,7 @@ Download and extract cli applications from `nRF5 Command Line Tools <https://www
 
 ----------------------------------------------------------------
 
-Set up the KNoT SKD Environment
+Set up the KNoT SDK Environment
 -------------------------------
 
 #. Download the zephyr-knot-sdk repository.
