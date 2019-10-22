@@ -129,15 +129,20 @@ You can see a start code example bellow.
 
    }
 
-On ``loop()`` function you can include your application logic.
+Use ``loop()`` function to include your application logic.
 
 .. warning::
 
     ``loop()`` function must NOT be blocking.
 
-On ``setup()`` you can register your sensors/actuators using `knot_proxy_register() <thing-api.html#knot-proxy-register>`_ and configures which events should send data to cloud with `knot_proxy_set_config() <thing-api.html#knot-proxy-set-config>`_.
+Use ``setup()`` to register your sensors/actuators using
+`knot_data_register() <thing-api.html#knot-data-register>`_ and configure
+which events should send data to cloud with `knot_data_config()
+<thing-api.html#knot-data-config>`_.
 
-For each registered sensor/actuator you may want to create a ``changed_cb`` or ``pool_cb`` function, this function are passed as callback on `register <thing-api.html#knot-proxy-register>`_ function.
+For each registered sensor/actuator you may want to create a ``write_cb`` or
+``read_cb`` function, which will be passed as callbacks on
+`register <thing-api.html#knot-data-register>`_ function.
 
 **Example** (`blink <samples/basic-samples/blink.html>`_):
 
@@ -151,11 +156,12 @@ For each registered sensor/actuator you may want to create a ``changed_cb`` or `
       gpio_pin_configure(gpio_led, LED_PIN, GPIO_DIR_OUT);
 
       /* KNoT config */
-      knot_proxy_register(0, "LED", KNOT_TYPE_ID_SWITCH,
+      knot_data_register(0, "LED", KNOT_TYPE_ID_SWITCH,
                KNOT_VALUE_TYPE_BOOL, KNOT_UNIT_NOT_APPLICABLE,
+               &led, sizeof(led),
                write_led, read_led);
 
-      knot_proxy_set_config(0, KNOT_EVT_FLAG_CHANGE, NULL);
+      knot_data_config(0, KNOT_EVT_FLAG_CHANGE, NULL);
 
    }
 
@@ -166,25 +172,25 @@ In this example a LED Sensor is registered with:
    - type_id = KNOT_TYPE_ID_SWITCH;
    - value_type = KNOT_VALUE_TYPE_BOOL;
    - unit = KNOT_UNIT_NOT_APPLICABLE;
-   - changed_cb = write_led;
-   - pool_cb = read_led;
+   - variable_address = &led;
+   - variable_size = sizeof(led);
+   - write_cb = write_led;
+   - read_cb = NULL;
 
 And it is configured to send message to Cloud every time the value changes.
 
- - The ``changed_cb`` function gets a value for a `knot_proxy <thing-api.html#struct-knot-proxy>`_ and it can set on a sensor/actuator.
- - The ``pool_cb`` function sets information of sensor/actuator on a `knot_proxy <thing-api.html#struct-knot-proxy>`_.
+ - ``write_cb``: This function is used to write in the actuator the value of
+   the associated variable. It is executed after the variable value is updated
+   remotely.
+ - ``read_cb``: This function is used to write the value read from the sensor
+   into the variable. It is executed in polling.
 
 .. code-block:: c
    :linenos:
 
-   void write_led(struct knot_proxy *proxy)
+   int write_led(int id)
    {
-      knot_proxy_value_get_basic(proxy, &led);
-
       gpio_pin_write(gpio_led, LED_PIN, !led); /* Led is On at LOW */
-   }
 
-   void read_led(struct knot_proxy *proxy)
-   {
-      knot_proxy_value_set_basic(proxy, &led);
+      return KNOT_CALLBACK_SUCCESS;
    }
