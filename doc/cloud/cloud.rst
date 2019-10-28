@@ -5,4 +5,5 @@ KNoT Cloud
 
    cloud-introduction
    cloud-deploy
+   cloud-cli
    cloud-api
