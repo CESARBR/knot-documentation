@@ -9,6 +9,7 @@ A general application for a KNoT Thing has the following structure:
     ├── CMakeLists.txt
     ├── prj.conf
     ├── setup.conf
+    ├── <board>.overlay (optional)
     └── src/
         └── <app-name>.c
 
@@ -80,6 +81,14 @@ setup.conf is a configuration file tha contains information about bluetooth conf
    CONFIG_BT_DEVICE_NAME="BLE device name"
 
 Change the name of bluetooth advertise name (``line 1``).
+
+----------------------------------------------------------------
+
+<board>.overlay (optional)
+--------------------------
+
+It is possible to use a DTS overlay file on the project by adding a file named
+<board>.overlay and placing it on the application main directory.
 
 ----------------------------------------------------------------
 
