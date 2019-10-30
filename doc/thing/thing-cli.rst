@@ -85,6 +85,9 @@ absolute file path.
 
    $ knot make --dts_ovl_path {PATH}
 
+.. note:: If the application folder has an overlay file this command will
+          ignore it.
+
 ----------------------------------------------------------------
 
 Flash board when done
