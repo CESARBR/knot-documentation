@@ -73,6 +73,20 @@ Currently, KNoT supports ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca1
 
 ----------------------------------------------------------------
 
+Use an external DTS overlay file
+--------------------------------
+
+.. warning:: The build command must be run from an application folder.
+
+It is possible to use an external DTS overlay file on the project by passing the
+absolute file path.
+
+.. code-block:: bash
+
+   $ knot make --dts_ovl_path {PATH}
+
+----------------------------------------------------------------
+
 Flash board when done
 ---------------------
 
