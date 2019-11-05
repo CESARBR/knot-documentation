@@ -9,6 +9,7 @@ All decisions are categorized in the following folders:
 * **Architecture** - Decisions on general architecture, code structure, coding conventions and common practices.
 
     - [ARC-001: Fog Architecture: Stage 1](./architecture/ARC-001-fog-architecture-stage-1.md)
+    - [ARC-002: Fog-Cloud Sync](./architecture/ARC-002-fog-cloud-sync.md)
 
 * **API** - Decisions on KNoT API designs.
 
