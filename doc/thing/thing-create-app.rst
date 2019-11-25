@@ -64,9 +64,14 @@ Below you can see a prj.conf from a simple KNoT project.
    CONFIG_LOG_IMMEDIATE=n
    CONFIG_KNOT_LOG=y
    CONFIG_KNOT_LOG_LEVEL_DEBUG=y
-   CONFIG_PRINTK=y
+   CONFIG_LOG_PRINTK=y
 
 Change the name of your device (``line 2``) and the maximum number of sensors you are using (``line 3``).
+
+.. note:: The CONFIG_PRINTK option may not work as expected on `KNoT Dongle
+          <supported-boards/knot-dongle.html>`_. You still can use the
+          CONFIG_LOG_PRINTK with all `supported boards
+          <thing-supported-boards.html>`_.
 
 ----------------------------------------------------------------
 
