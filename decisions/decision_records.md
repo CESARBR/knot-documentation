@@ -10,6 +10,7 @@ All decisions are categorized in the following folders:
 
     - [ARC-001: Fog Architecture: Stage 1](./architecture/ARC-001-fog-architecture-stage-1.md)
     - [ARC-002: Fog-Cloud Sync](./architecture/ARC-002-fog-cloud-sync.md)
+    - [ARC-003: AMQP Exchange name](./architecture/ARC-003-amqp-exc-name.md)
 
 * **API** - Decisions on KNoT API designs.
 
