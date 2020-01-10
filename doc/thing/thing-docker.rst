@@ -42,6 +42,8 @@ by the tag you used.
 Compile for your target board
 -----------------------------
 
+Inside the docker container, use the KNoT script to compile your project.
+
 .. code-block:: bash
 
    [user@container] $ sudo -E knot make -b {BOARD}
