@@ -130,13 +130,13 @@ Compiling project
 
       .. code-block:: bash
 
-         [user@container] $ knot make --board dk
+         [user@container] $ sudo -E knot make --board dk
 
    - If using the `KNoT Dongle <https://docs.zephyrproject.org/latest/boards/arm/nrf52840_pca10059/doc/index.html>`_:
 
       .. code-block:: bash
 
-         [user@container] $ knot make --board dongle
+         [user@container] $ sudo -E knot make --board dongle
 
 
 Flashing board
@@ -146,7 +146,7 @@ Flashing board
 
    .. code-block:: bash
 
-      [user@container] $ knot export output/
+      [user@container] $ sudo -E knot export output/
 
 #. Install `nRF Connect <https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Connect-for-desktop/Download>`_.
 
