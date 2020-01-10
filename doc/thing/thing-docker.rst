@@ -44,7 +44,7 @@ Compile for your target board
 
 .. code-block:: bash
 
-   container> $ sudo -E knot make -b {BOARD}
+   [user@container] $ sudo -E knot make -b {BOARD}
 
 .. note:: Currently, KNoT support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} with one of them.
 
@@ -64,7 +64,7 @@ Export the generated files to your project's directory
 
 .. code-block:: bash
 
-   container> $ sudo -E knot export /workdir/output
+   [user@container] $ sudo -E knot export /workdir/output
 
 The generated files can now be flashed to your device by using the
 `nRF Connect for Desktop <https://www.nordicsemi.com/?sc_itemid=%7B49D2264D-62FD-4C16-811F-88B477833C5D%7D>`_ and its
@@ -100,7 +100,7 @@ This will allow you to use the `--flash` flag to flash after building the projec
 
 .. code-block:: bash
 
-   container> $ sudo -E knot make -b {BOARD} --mcuboot
+   [user@container] $ sudo -E knot make -b {BOARD} --mcuboot
 
 .. note:: Currently, KNoT support ``dk`` (nrf52840_pca10056) or ``dongle`` (nrf52840_pca10059) board. Replace {BOARD} with one of them.
 
@@ -115,6 +115,6 @@ To get a list of all available commands, run:
 
 .. code-block:: bash
 
-   container> $ knot --help
+   [user@container] $ knot --help
 
 More info is available at the `Thing CLI doc section <thing-cli.html>`_.
