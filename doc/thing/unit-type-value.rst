@@ -89,6 +89,8 @@ This file defines the semantic for KNoT data types and unities used by KNoT data
 |                                |                    | | KNOT_UNIT_ENERGY_CAL      | | 0x05          |                       |
 |                                |                    | | KNOT_UNIT_ENERGY_KCAL     | | 0x06          |                       |
 +--------------------------------+--------------------+-----------------------------+-----------------+-----------------------+
+| KNOT_TYPE_ID_ACCELERATION      | 0X0016             | KNOT_UNIT_ACCELERATION_MS2  | 0X01            | KNOT_VALUE_TYPE_INT   |
++--------------------------------+--------------------+-----------------------------+-----------------+-----------------------+
 | | TypeIDs for logical units    | |                  | |                           | |               | |                     |
 | | KNOT_TYPE_ID_PRESENCE        | | 0xFFF0           | | KNOT_UNIT_NOT_APPLICABLE  | | 0x00          | | KNOT_VALUE_TYPE_BOOL|
 | | KNOT_TYPE_ID_SWITCH          | | 0xFFF1           | | KNOT_UNIT_NOT_APPLICABLE  | | 0x00          | | KNOT_VALUE_TYPE_BOOL|
