@@ -16,7 +16,7 @@ This file defines the semantic for KNoT data types and unities used by KNoT data
 | KNOT_TYPE_ID_CURRENT           | 0x0002             | | KNOT_UNIT_CURRENT_A               | | 0x01          | KNOT_VALUE_TYPE_INT   |
 |                                |                    | | KNOT_UNIT_CURRENT_MA              | | 0x02          |                       |
 +--------------------------------+--------------------+-------------------------------------+-----------------+-----------------------+
-| KNOT_TYPE_ID_RESISTENCE        | 0x0003             | KNOT_UNIT_RESISTENCE_OHM            | 0x01            | KNOT_VALUE_TYPE_INT   |
+| KNOT_TYPE_ID_RESISTANCE        | 0x0003             | KNOT_UNIT_RESISTANCE_OHM            | 0x01            | KNOT_VALUE_TYPE_INT   |
 +--------------------------------+--------------------+-------------------------------------+-----------------+-----------------------+
 | KNOT_TYPE_ID_POWER             | 0x0004             | | KNOT_UNIT_POWER_W                 | | 0x01          | KNOT_VALUE_TYPE_INT   |
 |                                |                    | | KNOT_UNIT_POWER_KW                | | 0x02          |                       |
