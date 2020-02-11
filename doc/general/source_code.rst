@@ -28,8 +28,9 @@ KNoT Cloud
 ----------
    - `knot-cloud <https://github.com/CESARBR/knot-cloud>`_
 
+      - `knot-cloud-bootstrap <https://github.com/CESARBR/knot-cloud-bootstrap>`_
       - `knot-cloud-ui <https://github.com/CESARBR/knot-cloud-ui>`_
-      - `knot-cloud-storage <https://github.com/CESARBR/knot-cloud-storage>`_
+      - `knot-cloud-protocol-adapter-websocket <https://github.com/CESARBR/knot-cloud-protocol-adapter-websocket>`_
       - `knot-cloud-storage <https://github.com/CESARBR/knot-cloud-storage>`_
       - `knot-cloud-authenticator <https://github.com/CESARBR/knot-cloud-authenticator>`_
 
